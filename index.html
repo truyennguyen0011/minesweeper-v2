@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Minesweeper</title>
+</head>
+
+<body>
+    <div class="start-screen">
+        <img draggable="false" src="./src/img/logo.png" alt="Image">
+        <select class="choose-level" title="choose level">
+            <option>Easy</option>
+            <option>Medium</option=>
+            <option>Hard</option=>
+        </select>
+        <a class="btn btn-start" title="start game">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Start
+        </a>
+    </div>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const startScreen = document.querySelector('.start-screen');
+        const level = document.querySelector('.choose-level');
+        const startBtn = document.querySelector('.btn-start');
+
+        startBtn.addEventListener('click', function () {
+            ipcRenderer.send('start:game', level.value);
+        });
+    </script>
+    <script src="./src/js/game.js"></script>
+</body>
+
+</html>
