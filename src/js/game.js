@@ -22,9 +22,9 @@ class Game {
         this.clickEvent = this.clickEvent.bind(this);
         this.tryAgain = this.tryAgain.bind(this);
 
-        this.board.addEventListener('contextmenu', this.contextMenuEvent);
+        this.content.addEventListener('contextmenu', this.contextMenuEvent);
 
-        this.board.addEventListener('click', this.clickEvent);
+        this.content.addEventListener('click', this.clickEvent);
     }
 
     contextMenuEvent(e) {
@@ -72,10 +72,21 @@ class Game {
         this.board.setAttribute('class', 'board');
 
         var header = document.createElement('div');
-        header.setAttribute('class', 'header');
+        this.content = document.createElement('div');
         
-        var content = document.createElement('div');
-        content.setAttribute('class', 'content');
+        var clockIcon = document.createElement('img');
+        var countTime = document.createElement('label');
+
+        header.setAttribute('class', 'header');
+        header.style.width = rowWidth + 4 + 'px';
+        
+        this.content.setAttribute('class', 'content');
+
+        clockIcon.src = './src/img/clock-icon.png';
+        clockIcon.setAttribute('draggable', 'false');
+
+        countTime.setAttribute('class', 'count-time');
+        countTime.innerText = '000';
 
         for (let i = 0; i < rows; i++) {
             var row = document.createElement('div');
@@ -94,10 +105,13 @@ class Game {
 
                 row.appendChild(col);
             }
-            content.appendChild(row);
+            this.content.appendChild(row);
         }
+
+        header.appendChild(clockIcon);
+        header.appendChild(countTime);
         this.board.appendChild(header);
-        this.board.appendChild(content);
+        this.board.appendChild(this.content);
         document.body.appendChild(this.board);
     }
 
@@ -183,15 +197,15 @@ class Game {
 
     gameWin() {
         this.str = 'You Win!';
-        this.board.removeEventListener('contextmenu', this.contextMenuEvent);
-        this.board.removeEventListener('click', this.clickEvent);
+        this.content.removeEventListener('contextmenu', this.contextMenuEvent);
+        this.content.removeEventListener('click', this.clickEvent);
 
         this.tryAgain();
     }
 
     gameOver() {
-        this.board.removeEventListener('contextmenu', this.contextMenuEvent);
-        this.board.removeEventListener('click', this.clickEvent);
+        this.content.removeEventListener('contextmenu', this.contextMenuEvent);
+        this.content.removeEventListener('click', this.clickEvent);
 
         var tiles = document.querySelectorAll('.mine');
         var tilesLength = tiles.length;

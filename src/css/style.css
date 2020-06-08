@@ -48,10 +48,7 @@ select {
 }
 
 select:hover {
-    box-shadow: 0 5px 40px 0 var(--start-color) inset, 
-                0 5px 40px 0 var(--start-color), 
-                0 5px 40px 0 var(--start-color) inset, 
-                0 5px 40px 0 var(--start-color);
+    box-shadow: 0 5px 40px 0 var(--start-color) inset, 0 5px 40px 0 var(--start-color), 0 5px 40px 0 var(--start-color) inset, 0 5px 40px 0 var(--start-color);
     text-shadow: 0 5px 40px 0 var(--start-color), 0 5px 40px 0 var(--start-color)x;
 }
 
@@ -140,6 +137,7 @@ select:hover {
 }
 
 /* Board */
+
 .board {
     width: 100%;
     height: 680px;
@@ -151,12 +149,31 @@ select:hover {
 }
 
 .board .header {
-    width: 0;
+    height: 60px;
+    position: relative;
+    background: none;
+    border: 2px solid var(--start-color);
+    border-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: var(--start-color);
+    font-size: 30px;
+}
+
+.board .header img {
+    display: inline-block;
+    width: auto;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.board .header .count-time {
+    position: absolute;
+    top: 50%;
+    left: 18%;
+    transform: translate(-18%, -50%)
 }
 
 .board .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border: 2px solid var(--start-color);
 }
