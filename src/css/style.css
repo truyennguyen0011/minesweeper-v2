@@ -1,7 +1,5 @@
 :root {
     --start-color: #15f4ee;
-    --lose-color: #141414;
-    --win-color: #141414;
     --bg-color: #031321;
 }
 
@@ -14,6 +12,7 @@
 body {
     background-color: var(--bg-color);
     font-family: sans-serif;
+    user-select: none;
 }
 
 /* Start screen */
@@ -160,8 +159,8 @@ select:hover {
     font-size: 30px;
 }
 
-.board .header img {
-    display: inline-block;
+.board .header .clock-icon {
+    /* display: inline-block; */
     width: auto;
     height: 40px;
     margin-left: 10px;
@@ -170,10 +169,83 @@ select:hover {
 .board .header .count-time {
     position: absolute;
     top: 50%;
-    left: 18%;
-    transform: translate(-18%, -50%)
+    left: 60px;
+    transform: translate(0, -50%)
+}
+
+.board .header .flag-icon {
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    width: auto;
+    transform: translate(0, -50%);
+    height: 35px;
+}
+
+.board .header .count-flag {
+    position: absolute;
+    top: 50%;
+    left: 200px;
+    transform: translate(0, -50%);
+}
+
+.board .header .replay {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    width: auto;
+    height: 35px;
+}
+
+.board .header .replay:hover {
+    opacity: 0.5;
+}
+
+.board .header .pause {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translate(0, -50%);
+    width: auto;
+    height: 40px;
+}
+
+.board .header .pause:hover {
+    opacity: 0.5;
 }
 
 .board .content {
+    cursor: pointer;
     border: 2px solid var(--start-color);
+}
+
+.board .content .row .hidden:hover {
+    opacity: 0.5;
+}
+
+/* game win  */
+.play-again {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    background: #091018;
+    opacity: 0.95;
+    border: solid 3px var(--start-color);
+    border-radius: 15px;
+}
+
+.play-again .text-lb {
+    font-size: 30px;
+    color: var(--start-color);
+    margin-bottom: 20px;
 }

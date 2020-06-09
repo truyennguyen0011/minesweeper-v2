@@ -6,7 +6,7 @@ function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
         icon: __dirname + './src/img/icon.ico',
-        width: 1080,
+        width: 960,
         height: 720,
         webPreferences: {
             nodeIntegration: true
@@ -17,7 +17,7 @@ function createWindow() {
     win.loadFile('index.html');
 
     // Open the DevTools.
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     // Remove menu
     win.removeMenu();
@@ -31,8 +31,8 @@ function setBoard(value) {
     if (value === 'Easy') {
         return {
             rows: 8,
-            cols: 8,
-            rowWidth: 400,
+            cols: 10,
+            rowWidth: 500,
             rowHeight: 50,
             mineNumbers: 10,
         }
