@@ -335,34 +335,39 @@ class Game {
     }
 
     tryAgain() {
-        var playAgain = document.createElement('div');
-        playAgain.setAttribute('class', 'play-again');
+        try {
+            var playAgain = document.createElement('div');
+            playAgain.setAttribute('class', 'play-again');
 
-        var againBtn = document.createElement('a');
-        var notification = document.createElement('label');
-        var span1 = document.createElement('span');
-        var span2 = document.createElement('span');
-        var span3 = document.createElement('span');
-        var span4 = document.createElement('span');
+            var againBtn = document.createElement('a');
+            var notification = document.createElement('label');
+            var span1 = document.createElement('span');
+            var span2 = document.createElement('span');
+            var span3 = document.createElement('span');
+            var span4 = document.createElement('span');
 
-        againBtn.setAttribute('class', 'btn again-btn');
-        againBtn.innerText = 'Try Again';
+            againBtn.setAttribute('class', 'btn again-btn');
+            againBtn.innerText = 'Try Again';
 
-        notification.setAttribute('class', 'text-lb');
-        notification.innerHTML = this.str;
+            notification.setAttribute('class', 'text-lb');
+            notification.innerHTML = this.str;
 
-        againBtn.appendChild(span1);
-        againBtn.appendChild(span2);
-        againBtn.appendChild(span3);
-        againBtn.appendChild(span4);
-        playAgain.appendChild(notification);
-        playAgain.appendChild(againBtn);
-        document.body.appendChild(playAgain);
+            againBtn.appendChild(span1);
+            againBtn.appendChild(span2);
+            againBtn.appendChild(span3);
+            againBtn.appendChild(span4);
+            playAgain.appendChild(notification);
+            playAgain.appendChild(againBtn);
+            document.body.appendChild(playAgain);
 
-        againBtn.addEventListener('click', () => {
-            this.board.remove();
-            playAgain.remove();
-            startScreen.style.display = 'flex';
-        });
+            againBtn.addEventListener('click', () => {
+                this.board.remove();
+                playAgain.remove();
+                startScreen.style.display = 'flex';
+            });
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 }
